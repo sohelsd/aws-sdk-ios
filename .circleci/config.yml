@@ -8,16 +8,13 @@ jobs:
   release_carthage:
     # Specify the Xcode version to use
     macos:
-      xcode: "10.0.0"
+      xcode: "9.2.0"
 
     steps: 
       - checkout
       - run:
           name: upgrade carthage
           command: brew outdated carthage || brew upgrade carthage
-      - run:
-          name: install github-release
-          command: brew install github-release
       - run:
           name: Build Cathage
           command: carthage build --no-skip-current
@@ -26,15 +23,6 @@ jobs:
           name: Create Cathage Archive
           command: bash CreateCarthageArchive.sh   
 
-      - run:
-          name: release the tag
-          command: |
-            tagdescription=$(sed -n '/## '${CIRCLE_TAG}'/,/## [0-9]*\.[0-9]*\.[0-9]/p'  CHANGELOG.md | sed '1d' | sed '$d')
-            tagname="AWS SDK for iOS "${CIRCLE_TAG}
-            github-release release -s ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME}  -t ${CIRCLE_TAG} -d "$tagdescription" -n "$tagname"         
-      - run:
-          name: upload file to git release 
-          command: github-release upload -s ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME}  -t ${CIRCLE_TAG} -f aws-sdk-ios-carthage.framework.zip -n aws-sdk-ios-carthage.framework.zip
 
   release_cocoapods:
     # Specify the Xcode version to use
@@ -87,18 +75,16 @@ workflows:
       - release_carthage:
           filters:
             branches:
-              ignore: /.*/
-            tags:
-              only: /^[0-9]+.[0-9]+.[0-9]+$/
+              only: testcircleci
       - release_cocoapods:
           filters:
             branches:
               ignore: /.*/
             tags:
-              only: /^[0-9]+.[0-9]+.[0-9]+$/
+              only: /^test[0-9]+.[0-9]+.[0-9]+$/
       - release_appledoc:
           filters:
             branches:
               ignore: /.*/
             tags:
-              only: /^[0-9]+.[0-9]+.[0-9]+$/
+              only: /^test[0-9]+.[0-9]+.[0-9]+$/
