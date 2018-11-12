@@ -5,11 +5,26 @@
 version: 2
 jobs:
 
+  test:
+    macos:
+      xcode: "10.0.0"
+    steps:
+      - checkout
+      - run:
+          name: unitt
+          command: |
+            echo ${AWS_CREDENTIALS}  | base64 --decode  > AWSCoreTests/Resources/credentials.json
+       #     cat AWSCoreTests/Resources/credentials.json 
+      - run :
+          name: unitest
+          command: xcodebuild -project AWSiOSSDKv2.xcodeproj -scheme AWSCloudWatch -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8'  -only-testing:AWSCloudWatchUnitTests  test  | xcpretty  
+      - store_artifacts:
+          path: output
+
   release_carthage:
     # Specify the Xcode version to use
     macos:
       xcode: "9.2.0"
-
     steps: 
       - checkout
       - run:
@@ -72,10 +87,14 @@ workflows:
   version: 2
   build_and_test:
     jobs: 
-      - release_carthage:
+      - test:
           filters:
             branches:
               only: testcircleci
+      - release_carthage:
+          filters:
+            branches:
+              only: master
       - release_cocoapods:
           filters:
             branches:
