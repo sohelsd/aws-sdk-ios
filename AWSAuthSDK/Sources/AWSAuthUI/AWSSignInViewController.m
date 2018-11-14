@@ -254,23 +254,24 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
                               action:@selector(handleUserPoolSignIn)
                     forControlEvents:UIControlEventTouchUpInside];
         
-        if (self.config.enableUserPoolsUI) {
-            
-            [self.forgotPasswordButton addTarget:self
-                                          action:@selector(handleUserPoolForgotPassword)
-                                forControlEvents:UIControlEventTouchUpInside];
-        } else {
-            [self.forgotPasswordButton removeFromSuperview];
-        }
-        
-        if (self.config.enableUserPoolsUI) {
-            
-            [self.signUpButton addTarget:self
-                                  action:@selector(handleUserPoolSignUp)
-                        forControlEvents:UIControlEventTouchUpInside];
-        } else {
-            [self.signUpButton removeFromSuperview];
-        }
+//        if (self.config.enableUserPoolsUI) {
+//            
+//            [self.forgotPasswordButton addTarget:self
+//                                          action:@selector(handleUserPoolForgotPassword)
+//                                forControlEvents:UIControlEventTouchUpInside];
+//        } else {
+//            [self.forgotPasswordButton removeFromSuperview];
+//        }
+        [self.forgotPasswordButton removeFromSuperview];
+        [self.signUpButton removeFromSuperview];
+//        if (self.config.enableUserPoolsUI) {
+//
+//            [self.signUpButton addTarget:self
+//                                  action:@selector(handleUserPoolSignUp)
+//                        forControlEvents:UIControlEventTouchUpInside];
+//        } else {
+//            [self.signUpButton removeFromSuperview];
+//        }
     } else {
         [self.tableFormView removeFromSuperview];
         self.orSignInWithLabel.text = @"Sign in with";
