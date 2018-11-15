@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
    end
 
    s.subspec 'UI' do  |ui|
-      ui.dependency 'AWSAuthUI', '2.7.1'
+      ui.dependency 'AWSAuthUI', '2.7.2'
    end
 
 end
