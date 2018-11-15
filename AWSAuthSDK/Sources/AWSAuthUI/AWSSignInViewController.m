@@ -226,6 +226,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 }
 
 - (void)setUpUserPoolsUI {
+    
     if (self.config.enableUserPoolsUI) {
         AWSDDLogDebug(@"User Pools Enabled. Setting up the view...");
         Class formTableCell = NSClassFromString(@"AWSFormTableCell");
@@ -288,6 +289,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     if (![self.config hasSignInButtonView]) {
         [self.orSignInWithLabel removeFromSuperview];
     }
+            [self.forgotPasswordButton removeFromSuperview];
+        [self.signUpButton removeFromSuperview];
 }
 
 - (void)setUpLogo:(UIImage *)image {
@@ -343,15 +346,15 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 }
 
 - (void)setUpResponders {
-    [self.signUpButton addTarget:self
+    /*[self.signUpButton addTarget:self
                           action:@selector(handleUserPoolSignUp)
-                forControlEvents:UIControlEventTouchUpInside];
+                forControlEvents:UIControlEventTouchUpInside];*/
     [self.signInButton addTarget:self
                           action:@selector(handleUserPoolSignIn)
                 forControlEvents:UIControlEventTouchUpInside];
-    [self.forgotPasswordButton addTarget:self
+    /*[self.forgotPasswordButton addTarget:self
                                   action:@selector(handleUserPoolForgotPassword)
-                        forControlEvents:UIControlEventTouchUpInside];
+                        forControlEvents:UIControlEventTouchUpInside];*/
 }
 
 - (void)setUpNavigationController {
@@ -377,8 +380,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 - (void)setUpFont {
     AWSDDLogDebug(@"Setting up Font");
     [self.signInButton.titleLabel setFont:self.config.font];
-    [self.signUpButton.titleLabel setFont:self.config.font];
-    [self.forgotPasswordButton.titleLabel setFont:self.config.font];
+    /*[self.signUpButton.titleLabel setFont:self.config.font];
+    [self.forgotPasswordButton.titleLabel setFont:self.config.font];*/
     [self.orSignInWithLabel setFont:self.config.font];
 }
 
