@@ -37,13 +37,13 @@ NS_ASSUME_NONNULL_BEGIN
  @property signUpButton
  @brief UIButton that kicks off the SignUp flow on click
  **/
-@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+//@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 
 /**
  @property forgotPasswordButton
  @brief UIButton that kicks off the ForgotPassword flow on click
  **/
-@property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
+//@property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 
 /**
  @property orSignInWithLabel

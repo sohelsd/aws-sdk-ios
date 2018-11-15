@@ -263,8 +263,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 //        } else {
 //            [self.forgotPasswordButton removeFromSuperview];
 //        }
-        [self.forgotPasswordButton removeFromSuperview];
-        [self.signUpButton removeFromSuperview];
+        // [self.forgotPasswordButton removeFromSuperview];
+        // [self.signUpButton removeFromSuperview];
 //        if (self.config.enableUserPoolsUI) {
 //
 //            [self.signUpButton addTarget:self
@@ -277,8 +277,8 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
         [self.tableFormView removeFromSuperview];
         self.orSignInWithLabel.text = @"Sign in with";
         [self.signInButton removeFromSuperview];
-        [self.signUpButton removeFromSuperview];
-        [self.forgotPasswordButton removeFromSuperview];
+        // [self.signUpButton removeFromSuperview];
+        // [self.forgotPasswordButton removeFromSuperview];
         
         [self.view addConstraint: [NSLayoutConstraint constraintWithItem:self.orSignInWithLabel
                                                                attribute:NSLayoutAttributeTop
@@ -508,20 +508,20 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
     
     // Dismisses the keyboard if open before transitioning to the new storyboard
     [self.view endEditing:YES];
-    
+    /*
     Class awsUserPoolsUIOperations = NSClassFromString(USERPOOLS_UI_OPERATIONS);
     AWSUserPoolsUIOperations *userPoolsOperations = [[awsUserPoolsUIOperations alloc] initWithAuthUIConfiguration:self.config];
-    [userPoolsOperations pushSignUpVCFromNavigationController:self.navigationController];
+    [userPoolsOperations pushSignUpVCFromNavigationController:self.navigationController];*/
 }
 
 - (void)handleUserPoolForgotPassword {
     
     // Dismisses the keyboard if open before transitioning to the new storyboard
     [self.view endEditing:YES];
-    
+    /*
     Class awsUserPoolsUIOperations = NSClassFromString(USERPOOLS_UI_OPERATIONS);
     AWSUserPoolsUIOperations *userPoolsOperations = [[awsUserPoolsUIOperations alloc] initWithAuthUIConfiguration:self.config];
-    [userPoolsOperations pushForgotPasswordVCFromNavigationController:self.navigationController];
+    [userPoolsOperations pushForgotPasswordVCFromNavigationController:self.navigationController];*/
 }
 
 - (void)onLoginWithSignInProvider:(id<AWSSignInProvider>)signInProvider
