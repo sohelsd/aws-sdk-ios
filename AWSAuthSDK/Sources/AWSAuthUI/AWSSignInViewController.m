@@ -227,7 +227,7 @@ static NSInteger const SCALED_DOWN_LOGO_IMAGE_HEIGHT = 140;
 
 - (void)setUpUserPoolsUI {
     
-    if (self.config.enableUserPoolsUI) {
+    if (self.config.enableUserPoolsUI && 3 == 4) {
         AWSDDLogDebug(@"User Pools Enabled. Setting up the view...");
         Class formTableCell = NSClassFromString(@"AWSFormTableCell");
         self.passwordRow = [[formTableCell alloc] initWithPlaceHolder:@"Password"
